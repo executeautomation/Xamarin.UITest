@@ -74,12 +74,10 @@ namespace CrossPlatformTest
         [Test]
         public void NewTest()
         {
-            app.Tap(x => x.Class("SystemWebView").Css("INPUT#txtUserName"));
-            app.EnterText(x => x.Class("SystemWebView").Css("INPUT#txtUserName"), "EATEST");
-            app.Tap(x => x.Class("SystemWebView").XPath("//P[text()=\"Hello EATEST!\"]"));
-            app.Tap(x => x.Class("SystemWebView").XPath("//SPAN[text()=\"About\"]"));
-            app.Tap(x => x.Class("SystemWebView").Css("ION-ICON.tab-button-icon.icon.icon-md.ion-md-contacts"));
-            app.Tap(x => x.Class("SystemWebView").Css("A#tab-t0-1"));
+            app.EnterText(x => x.Css("INPUT#txtUserName"), "EATEST");
+            app.Tap(x => x.XPath("//span[text()='About']"));
+            app.Tap(x => x.XPath("//span[text()='Contact']"));
+            app.Tap(x => x.XPath("//span[text()='Home']"));
         }
 
       
