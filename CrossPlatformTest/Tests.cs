@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CrossPlatformTest.Pages;
 using NUnit.Framework;
 using Xamarin.UITest;
 
@@ -9,7 +10,6 @@ namespace CrossPlatformTest
     //[TestFixture(Platform.iOS)]
     public class Tests
     {
-        IApp app;
         Platform platform;
 
         public Tests(Platform platform)
@@ -20,13 +20,7 @@ namespace CrossPlatformTest
         [SetUp]
         public void BeforeEachTest()
         {
-            app = AppInitializer.StartApp(platform);
-        }
-
-        [Test]
-        public void AppLaunches()
-        {
-            app.Screenshot("First screen.");
+            Settings.AppContext = AppInitializer.StartApp(platform);
         }
 
         //Recorded test 
@@ -55,29 +49,36 @@ namespace CrossPlatformTest
         [Test]
         public void TestCreateList()
         {
-            //app.Repl();
-            app.Tap(x => x.Marked("More options"));
-            app.Tap(x => x.Text("Add"));
-            app.EnterText(x => x.Id("txtTitle"), "EA");
-            app.DismissKeyboard();
-            app.EnterText(x => x.Id("txtDesc"), "Description");
-            app.DismissKeyboard();
-            app.Tap(x => x.Id("save_button"));
-            app.WaitForElement(x => x.Text("EA"));
-            //app.ScrollDownTo(x => x.Text("EA"));
-            var elementCount = app.Query(x => x.Id("recyclerView").All().Text("EA")).Count();
-            Assert.That(elementCount, Is.EqualTo(1), "There is no such element being added in app list");
 
+            HomePage homePage = new HomePage();
+            homePage.ClickAdd();
+
+
+
+            //app.Repl();
+            //app.Tap(x => x.Marked("More options"));
+            //app.Tap(x => x.Text("Add"));
+            //app.EnterText(x => x.Id("txtTitle"), "EA");
+            //app.DismissKeyboard();
+            //app.EnterText(x => x.Id("txtDesc"), "Description");
+            //app.DismissKeyboard();
+            //app.Tap(x => x.Id("save_button"));
+            //app.WaitForElement(x => x.Text("EA"));
+            ////app.ScrollDownTo(x => x.Text("EA"));
+            //var elementCount = app.Query(x => x.Id("recyclerView").All().Text("EA")).Count();
+            //Assert.That(elementCount, Is.EqualTo(1), "There is no such element being added in app list");
+            //app.SwipeRightToLeft();
+            //app.SwipeLeftToRight();
         }
 
         //Recorded Hybrid application code
         [Test]
         public void NewTest()
         {
-            app.EnterText(x => x.Css("INPUT#txtUserName"), "EATEST");
-            app.Tap(x => x.XPath("//span[text()='About']"));
-            app.Tap(x => x.XPath("//span[text()='Contact']"));
-            app.Tap(x => x.XPath("//span[text()='Home']"));
+            //app.EnterText(x => x.Css("INPUT#txtUserName"), "EATEST");
+            //app.Tap(x => x.XPath("//span[text()='About']"));
+            //app.Tap(x => x.XPath("//span[text()='Contact']"));
+            //app.Tap(x => x.XPath("//span[text()='Home']"));
         }
 
       
