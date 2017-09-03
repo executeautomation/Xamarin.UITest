@@ -7,7 +7,9 @@ using Android.Widget;
 using EAXamarinApp.Helpers;
 using EAXamarinApp.Model;
 using EAXamarinApp.ViewModel;
+using Java.Interop;
 using Plugin.CurrentActivity;
+
 
 namespace EAXamarinApp.Droid
 {
@@ -43,6 +45,12 @@ namespace EAXamarinApp.Droid
 
             MessagingCenter.Send(this, "AddItem", _item);
             Finish();
+        }
+
+        [Export("BackDoorDemo")]
+        public void BackDoorDemo()
+        {
+            title.Text = title.Text + "I am hacking from the other way around";
         }
     }
 }
